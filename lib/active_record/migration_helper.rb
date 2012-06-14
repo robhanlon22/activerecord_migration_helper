@@ -16,9 +16,10 @@ module ActiveRecord
     def dropping(*column_names)
       singleton_class.class_eval do
         define_method(:columns) do
-          column_names_as_symbols = column_names.map(&:to_sym)
+          require 'set'
+          column_names_set = Set.new(column_names.map(&:to_sym))
           super().reject do |column|
-            column_names_as_symbols.include?(column.name.to_sym)
+            column_names_set.include?(column.name.to_sym)
           end
         end
       end
