@@ -2,7 +2,6 @@ require 'require_relative'
 
 require_relative 'migration_helper/version'
 
-# Provides helpers to easy migrating data when ActiveRecord is the ORM.
 module ActiveRecord
   module MigrationHelper
     # Public:
